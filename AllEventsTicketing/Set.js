@@ -2,6 +2,10 @@ function Set() {
 	
 	
 	this.intersection = function(listA, listB) {
+
+		if(listA === null || listB === null){
+			return null;
+		}
     
 	   var resultList = []; //create a result list array
 
@@ -29,10 +33,14 @@ function Set() {
 
 	   var resultList = [];
 
+	   if(listA === null || listB === null){
+		   return null;
+	   }
+
 	   var SD = this.symmetricDifference(listA,listB);
 	   var inter = this.intersection(listA,listB);
 
-	   resultList = SD.concat(inter);
+	   resultList = inter.concat(SD);
 
 	   resultList.push();
 
@@ -44,6 +52,10 @@ function Set() {
 
 
 	this.relativeComplement = function(listA, listB) {
+
+		if(listA === null || listB === null){
+			return null;
+		}
 
 	   var resultList = [];
 
@@ -70,6 +82,10 @@ function Set() {
 
 
 	this.symmetricDifference = function(listA, listB) {
+
+		if(listA === null || listB === null){
+			return null;
+		}
 
 	   var resultList = [];
 
