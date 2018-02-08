@@ -1,4 +1,6 @@
-<app-header></app-header>
-<div class="container">
-    <app-contacts></app-contacts>
+<app-header (selectedFeatureEvent) = "selectedMenu = $event"></app-header>
+<div class="container pull-left" [ngSwitch]="selectedMenu">
+    <app-documents *ngSwitchCase="'documents'"></app-documents>
+    <app-contacts *ngSwitchCase="'contacts'"></app-contacts>
+    <app-message-list *ngSwitchCase="'messages'"></app-message-list>
 </div>
