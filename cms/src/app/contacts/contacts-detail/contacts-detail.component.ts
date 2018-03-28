@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Contact} from '../contact-list/contact.model';
 import { ContactService } from '../contact.service';
+import { ActivatedRoute, Router, Params } from '@angular/router';
+import { WindRefService } from '../../wind-ref.service';
 
 @Component({
   selector: 'app-contacts-detail',
@@ -9,14 +11,28 @@ import { ContactService } from '../contact.service';
 })
 export class ContactsDetailComponent implements OnInit {
   @Input() contact: Contact;
-  constructor(private contactService: ContactService) { }
+  id: string;
+  nativeWindow: any;
+
+  constructor(private contactService: ContactService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private WindRefService: WindRefService ) { 
+      this.nativeWindow = WindRefService.getNativeWindow();
+    }
 
   ngOnInit() {
-      this.contactService.contactSelectedEvent.subscribe(
-        (contact: Contact) => {
-          this.contact = contact;
+      this.activatedRoute.params.subscribe(
+        (params: Params) => {
+          this.id = params['id'];
+          this.contact = this.contactService.getContact(this.id);
         }
       );
     }
+
+     onDelete() {
+       this.contactService.deleteContact(this.contact);
+       this.router.navigate(['/contacts'], {relativeTo: this.activatedRoute});
+      }
 
 }

@@ -15,7 +15,7 @@ export class DocumentService {
     }
 
     getDocument(id: string): Document {
-        for (let document in this.documents) {
+        for (const document in this.documents) {
             if (this.documents[document].id === id) {
                 return this.documents[document];
             }
@@ -23,4 +23,10 @@ export class DocumentService {
         return null;
     }
 
+    deleteDocument(document: Document) {
+        if (document === null) {
+          return;
+    }
+
+ }
 }

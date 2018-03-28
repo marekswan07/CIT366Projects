@@ -16,10 +16,17 @@ export class ContactService {
     }
 
     getContact(id: string): Contact {
-        for (let contact in this.contacts) {
+        for (const contact in this.contacts) {
             if (this.contacts[contact].id === id) {
                 return this.contacts[contact];
             }
+        }
+        return null;
+    }
+
+    deleteContact(contact: Contact){
+        if (contact == null){
+            return;
         }
     }
 

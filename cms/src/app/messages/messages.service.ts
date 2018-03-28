@@ -17,8 +17,8 @@ export class MessageService {
 
     getMessage(id: string): Message {
         for (let message in this.messages) {
-            if (message.id === id) {
-             return message;
+            if (this.messages[message].id === id) {
+             return this.messages[message];
             }
         }
         return null;

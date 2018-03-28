@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header.component';
 import { ContactsComponent } from './contacts/contacts.component';
@@ -20,6 +19,11 @@ import { DropdownFeaturesDirective } from './Custom Directives Shared/dropdown-f
 import { ContactService } from './contacts/contact.service';
 import { DocumentService } from './documents/document.service';
 import { MessageService } from './messages/messages.service';
+import { AppRoutingModule } from './app-routing';
+import { DocumentEditComponent } from './documents/document-edit/document-edit.component';
+import { DocumentViewComponent } from './documents/document-view/document-view.component';
+import { WindRefService } from './wind-ref.service';
+import { ContactEditComponent } from './contacts/contact-edit/contact-edit.component';
 
 
 @NgModule({
@@ -38,12 +42,16 @@ import { MessageService } from './messages/messages.service';
     MessageItemComponent,
     MessageEditComponent,
     MessageListComponent,
-    DropdownFeaturesDirective
+    DropdownFeaturesDirective,
+    DocumentEditComponent,
+    DocumentViewComponent,
+    ContactEditComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
-  providers: [ContactService, DocumentService, MessageService],
+  providers: [ContactService, DocumentService, MessageService, WindRefService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
